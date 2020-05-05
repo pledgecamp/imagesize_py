@@ -42,3 +42,9 @@ class GetTest(unittest.TestCase):
         width, height = imagesize.get(os.path.join(imagedir, "multipage_tiff_example.tif"))
         self.assertEqual(width, 800)
         self.assertEqual(height, 600)
+
+    def test_load_file_object(self):
+        with open(os.path.join(imagedir, "test.png"), 'rb') as f:
+            width, height = imagesize.get_from_file(f)
+            self.assertEqual(width, 802)
+            self.assertEqual(height, 670)
